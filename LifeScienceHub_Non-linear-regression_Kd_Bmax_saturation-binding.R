@@ -51,7 +51,7 @@ print(mmdf)
 
 p<-ggplot(df, aes(x = Concentration, y = CPM)) +
   theme_bw() +
-  xlab("[64Cu]Cu-NOTA-anti-mCXCR3 [nM]") +
+  xlab("Binding molecule [nM]") +
   ylab("Specific Binding (CPM)") +
   ggtitle("") +
   geom_point(alpha = 1, color="black", size=2) +
@@ -70,7 +70,7 @@ summary(MM.model)
 ###!!!!! not working with counts as Y instead of %bidning
 mm.model.nls <- nls(CPM~r*Concentration/(Kd+Concentration), data=df, 
                     start = list(Kd=max(df$CPM)/2, 
-                                r=max(df$CPM)))
+                                Bmax=max(df$CPM)))
 
 summary(mm.model.nls)
 
